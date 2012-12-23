@@ -53,4 +53,20 @@ class StatusTest < Test::Unit::AcceptanceTestCase
 
     assert_equal json, parse_response_as_json
   end
+
+  scenario "Get public project's build info in JSON format" do
+    build = Build.gen(:successful, :commit => Commit.gen(:identifier => "87e673a"))
+    successful_project = Project.gen :successful, :builds => [build]
+
+    get "/#{successful_project.permalink}/builds/#{build.id}.json"
+
+    assert_equal "application/json; charset=utf-8", response_content_type
+
+    assert_equal parse_response_as_json, {
+      "project" => {
+        "name" => successful_project.name,
+        "status" => "success"
+      }
+    }
+  end
 end
