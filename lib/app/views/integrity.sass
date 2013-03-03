@@ -309,11 +309,11 @@ a
 
   #build, #last_build
     position: relative
-    h1, blockquote
+    .title, blockquote
       :border
         width: 0 1px
         style: solid
-    h1
+    .title
       border-top-width: 1px
     blockquote
       bottom-bottom-width: 1px
@@ -323,10 +323,10 @@ a
       font-size: smaller
 
     &.success
-      h1, blockquote
+      .title, blockquote
         background-color: $success_bg
         border-color: ($success_bg - #222) ($success_bg + #111) ($success_bg + #111) ($success_bg - #222)
-      h1
+      .title
         color: $success_color
       .meta, .github a
         color: $success_bg - #444
@@ -335,10 +335,10 @@ a
           background-color: $success_color
 
     &.failed
-      h1, blockquote
+      .title, blockquote
         background-color: $failed_bg
         border-color: ($failed_bg - #222) ($failed_bg + #111) ($failed_bg + #111) ($failed_bg - #222)
-      h1
+      .title
         color: $failed_color
       .meta, .github a
         color: $failed_bg - #444
@@ -347,10 +347,10 @@ a
           background-color: $failed_color
 
     &.building
-      h1, blockquote
+      .title, blockquote
         background-color: $building_bg
         border-color: ($building_bg - #222) ($building_bg + #111) ($building_bg + #111) ($building_bg - #222)
-      h1
+      .title
         color: $building_color
       .meta, .github a
         color: $building_color - #444
@@ -358,11 +358,14 @@ a
           color: $building_bg
           background-color: $building_color
 
-    h1
+    .title
       margin-top: .5em
       margin-bottom: 0
       padding: .25em
       color: $success_color
+      
+      h1
+        margin-right: 3em
 
     blockquote
       padding: .75em
