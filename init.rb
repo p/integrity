@@ -19,7 +19,12 @@ Integrity.configure do |c|
   c.build_all                   = true
   c.auto_branch                 = false
   c.trim_branches               = false
-  c.builder                     = :threaded, 5
+  # Run one build at a time for projects like Rails applications
+  # where the test suite uses a fixed database name
+  c.builder                     = :threaded, 1
+  # Run up to 5 builds at a time when several invocations of the test suite
+  # can be run concurrently
+  # c.builder                   = :threaded, 1
   c.project_default_build_count = 10
   c.build_output_interval       = 5
   c.status_image_always_public  = false
